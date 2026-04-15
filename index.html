@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjonctif-Trainer - Un échange pour changer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📖 Subjonctif-Trainer</h1>
+            <p class="subtitle">Übe den Subjonctif mit Beispielen aus "Un échange pour changer"</p>
+        </header>
+
+        <!-- Level-Auswahl -->
+        <div class="level-selection" id="levelSelection">
+            <h2>Wähle dein Level:</h2>
+            <div class="level-cards">
+                <div class="level-card" onclick="startLevel(1)">
+                    <div class="level-icon">🌱</div>
+                    <h3>Level 1: Anfänger</h3>
+                    <p>Formen erkennen</p>
+                    <p class="level-detail">Multiple Choice</p>
+                </div>
+                <div class="level-card" onclick="startLevel(2)">
+                    <div class="level-icon">🌿</div>
+                    <h3>Level 2: Fortgeschritten</h3>
+                    <p>Lücken füllen</p>
+                    <p class="level-detail">Aus der Lektüre</p>
+                </div>
+                <div class="level-card" onclick="startLevel(3)">
+                    <div class="level-icon">🌳</div>
+                    <h3>Level 3: Experte</h3>
+                    <p>Sätze bilden</p>
+                    <p class="level-detail">Freie Anwendung</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spiel-Bereich -->
+        <div class="game-area hidden" id="gameArea">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>Frage <span id="currentQuestion">1</span> von <span id="totalQuestions">10</span></span>
+                    <span>Punkte: <span id="score">0</span></span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- Frage -->
+            <div class="question-container">
+                <div class="question-header">
+                    <span class="question-type" id="questionType">Multiple Choice</span>
+                    <span class="level-badge" id="levelBadge">Level 1</span>
+                </div>
+                <div class="question-text" id="questionText"></div>
+                <div class="question-context" id="questionContext"></div>
+            </div>
+
+            <!-- Antwort-Bereich -->
+            <div class="answer-container" id="answerContainer">
+                <!-- Wird dynamisch gefüllt -->
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-box hidden" id="feedbackBox">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div class="feedback-text" id="feedbackText"></div>
+                <div class="feedback-explanation" id="feedbackExplanation"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-container">
+                <button class="btn btn-primary hidden" id="checkBtn" onclick="checkAnswer()">✓ Überprüfen</button>
+                <button class="btn btn-secondary hidden" id="nextBtn" onclick="nextQuestion()">→ Nächste Frage</button>
+                <button class="btn btn-hint" onclick="giveHint()">💡 Hinweis</button>
+                <button class="btn btn-back" onclick="backToLevels()">← Zurück</button>
+            </div>
+        </div>
+
+        <!-- Ergebnis-Bildschirm -->
+        <div class="result-screen hidden" id="resultScreen">
+            <div class="result-icon" id="resultIcon"></div>
+            <h2 id="resultTitle"></h2>
+            <div class="result-stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="finalScore">0</div>
+                    <div class="stat-label">Punkte</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="correctAnswers">0</div>
+                    <div class="stat-label">Richtig</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="wrongAnswers">0</div>
+                    <div class="stat-label">Falsch</div>
+                </div>
+            </div>
+            <div class="result-message" id="resultMessage"></div>
+            <div class="error-analysis" id="errorAnalysis"></div>
+            <div class="button-container">
+                <button class="btn btn-primary" onclick="restartLevel()">🔄 Nochmal</button>
+                <button class="btn btn-secondary" onclick="backToLevels()">← Level wählen</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
